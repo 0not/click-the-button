@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<script>
+
+		var tries=0;
+		var points=0;
+		var messages=[
+			"Keep trying, it'll work eventually.",
+			"you don't got this...", 
+			"This is dumb.", 
+			"t0t@| F@|lUr3", 
+			"OH you were so close...", 
+			"This is a waste of your time.", 
+			"Pointless...", 
+			"[Insert negative affirmation here]", 
+			"what is life", 
+			"no0b"
+		];
+		var colors=[
+			"red",
+			"orange",
+			"yellow",
+			"GreenYellow",
+			"green",
+			"Aquamarine",
+			"blue",
+			"BlueViolet",
+			"SaddleBrown",
+			"Black",
+		];
+		function myfunc() {
+			var x=Math.random()*100;
+			var y=Math.random()*100;
+			var butt=document.getElementById("fake");
+			butt.style.left=x+"%";
+			butt.style.top=y+"%";
+			tries=tries+1;
+			points++;
+			document.getElementById("pts").innerHTML=points;
+			
+			if (tries >= 10){
+				tries=10;
+				document.body.style="background-color: FireBrick;";
+			}
+			failmove(tries);
+			
+		}
+		function failmove(tries){
+
+			var failure=document.getElementById("fail");
+			failure.innerHTML=messages[tries-1];
+			failure.style.top=(tries-1)*9+"vh";
+			failure.style.color=colors[tries-1];
+			
+		}
+	</script>
+	<style>
+		#fake{
+			position: absolute;
+			height: 100px;
+			width: 100px;
+			border-radius: 50%;
+			background-color: DarkGray;
+			border:2px solid #2f2f2f;
+		}
+		#fail {
+			font-size: xxx-large;
+			text-align: center;
+			position: relative;
+		}
+		h1{
+			text-align: center; 
+			font-family: "Arial Black";
+		}
+	</style>
+</head>
+<body>
+	<div>Points: <span id="pts">0</span></div>
+	<h1>CLICK THE BUTTON </h1>
+	<p id="fail"></p>
+	<button id="fake" onmouseover="myfunc()" onclick="alert('WOW, you actually clicked it!')"> click me </button>
+
+
+</body>
+</html>
